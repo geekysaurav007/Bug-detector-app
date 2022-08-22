@@ -1,0 +1,36 @@
+<div>
+    <mat-card>
+        <section class="mat-typography">
+            <h3>CREATE A NEW ISSUE</h3>
+        </section>
+        <mat-divider></mat-divider>
+        <br>
+        <form [formGroup]="createform" class="create-form" >
+            <mat-form-field class="field-full-width">
+                <input matInput placeholder="Issue Title" formControlName="title" #title>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="field-full-width">
+                <input matInput placeholder="Responsible" formControlName="responsible" #responsible>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="field-full-width">
+                <textarea matInput placeholder="Description" formControlName="description" #description>
+                    </textarea>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="field-full-width">
+                <mat-select placeholder="Severity" formControlName="severity" #severity>
+                <mat-option value="Low">Low</mat-option>
+                <mat-option value="Medium">Medium</mat-option>
+                <mat-option value="High">High</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <mat-divider></mat-divider>
+            <br><br>
+            <button mat-raised-button color="accent" routerLink="/list">Back</button>
+            <button type="submit" (click)="addIssue(title.value,responsible.value,description.value,severity.value)"[disabled]="createform.pristine || createform.invalid" mat-raised-button color="primary">Save</button>
+        </form>
+    </mat-card>
+</div>
